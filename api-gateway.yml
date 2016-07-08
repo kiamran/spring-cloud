@@ -1,4 +1,31 @@
 ---
 server:
-    port: 8888
+    port: 7777
     context-path: /
+---
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+  metrics:
+    enabled: true
+  refresh:
+    enabled: true
+---
+routes:
+  core: site1.com
+  geo-search: site2.com
+  geo-data: site3.com
+  i18n: site4.com
+---
+spring:
+  profiles: production
+
+logging:
+  config: classpath:prod-logback.xml
+  file: app.log
+  path: /opt/flatdesk/app/logs/
+  level:
+   'org.springframework': INFO
+   'org.hibernate': INFO
+   'com.flatdesk': TRACE
