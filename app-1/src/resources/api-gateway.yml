@@ -31,3 +31,21 @@ logging:
    'org.springframework': INFO
    'org.hibernate': INFO
    'com.flatdesk': TRACE
+
+
+---
+#application and production specific config is stored in consul KV storage.
+spring:
+  profiles:
+    active: production
+---
+#there is no reason to store dev profile in consul or any other could config.
+spring:
+  profiles: dev
+logging:
+  config: classpath:dev-logback.xml
+  level:
+   'org.springframework': WARN
+   'org.hibernate': WARN
+   'com.flatdesk': TRACE
+   'org.apache': ERROR
