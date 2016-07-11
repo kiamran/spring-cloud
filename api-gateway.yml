@@ -11,6 +11,8 @@ endpoints:
     enabled: true
   refresh:
     enabled: true
+  monitor:
+    enabled: true
 ---
 routes:
   core: site1.com
