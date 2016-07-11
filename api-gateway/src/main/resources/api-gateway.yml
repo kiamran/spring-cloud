@@ -1,7 +1,39 @@
+---
+server:
+    port: 8080
+    context-path: /
+---
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+  metrics:
+    enabled: true
+  refresh:
+    enabled: true
+---
+routes:
+  core: core.flatdesk.co
+  geo-search: geo.search.flatdesk.co
+  geo-data: geo.data.flatdesk.co
+  i18n: i18n.flatdesk.co
+
 #application and production specific config is stored in consul KV storage.
 spring:
   profiles:
     active: production
+---
+spring:
+  profiles: production
+
+logging:
+  config: classpath:prod-logback.xml
+  file: app.log
+  path: /opt/flatdesk/app/logs/
+  level:
+   'org.springframework': INFO
+   'org.hibernate': INFO
+   'com.flatdesk': TRACE
 ---
 #there is no reason to store dev profile in consul or any other could config.
 spring:
